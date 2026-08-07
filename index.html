@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>محمد قدیمی نیلق | وب‌سایت و رزومه شخصی</title>
+    <!-- اضافه کردن فونت وزیرمتن جهت نمایش عالی و شیک بخش فارسی -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --surface-color: rgba(22, 30, 46, 0.7);
+            --surface-hover: rgba(30, 41, 59, 0.9);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --primary: #38bdf8;
+            --primary-glow: rgba(56, 189, 248, 0.15);
+            --accent: #818cf8;
+            --font-fa: 'Vazirmatn', sans-serif;
+            --font-en: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            --card-radius: 16px;
+        }
+
+        [data-theme="light"] {
+            --bg-color: #f8fafc;
+            --surface-color: rgba(255, 255, 255, 0.85);
+            --surface-hover: rgba(255, 255, 255, 1);
+            --border-color: rgba(0, 0, 0, 0.08);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --primary: #0284c7;
+            --primary-glow: rgba(2, 132, 199, 0.1);
+            --accent: #4f46e5;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-fa);
+            line-height: 1.7;
+            padding-bottom: 80px;
+            overflow-x: hidden;
+        }
+
+        body.lang-en {
+            font-family: var(--font-en);
+            direction: ltr;
+        }
+
+        /* Top Header Controls */
+        .controls-bar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 1000;
+            background: var(--surface-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 8px 16px;
+            border-radius: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
+        }
+
+        .btn-ctrl {
+            background: transparent;
+            color: var(--text-main);
+            border: none;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-ctrl:hover {
+            background: var(--primary-glow);
+            color: var(--primary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 100px auto 0;
+            padding: 0 20px;
+        }
+
+        /* Hero / Profile Section */
+        .profile-card {
+            background: var(--surface-color);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.05);
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .name {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 16px;
+        }
+
+        .bio {
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 24px;
+            font-size: 0.95rem;
+            text-align: justify;
+            text-align-last: center;
+        }
+
+        .contact-info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .info-tag {
+            background: rgba(255,255,255,0.03);
+            padding: 6px 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .social-btn {
+            color: var(--text-main);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 10px;
+            background: var(--surface-hover);
+            border: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .action-btns {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .btn-action {
+            background: var(--primary);
+            color: #fff;
+            padding: 10px 24px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px var(--primary-glow);
+        }
+
+        .btn-action.outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            box-shadow: none;
+        }
+
+        .btn-action.outline:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* Main Section Cards */
+        section {
+            background: var(--surface-color);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--card-radius);
+            padding: 30px;
+            margin-bottom: 24px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Timeline Items */
+        .timeline-item {
+            margin-bottom: 24px;
+            position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .item-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            margin-bottom: 6px;
+        }
+
+        .item-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .item-date {
+            font-size: 0.8rem;
+            background: var(--primary-glow);
+            color: var(--primary);
+            padding: 2px 10px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .item-subtitle {
+            color: var(--accent);
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .item-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .item-desc ul {
+            margin-right: 18px;
+            margin-top: 8px;
+        }
+
+        body.lang-en .item-desc ul {
+            margin-right: 0;
+            margin-left: 18px;
+        }
+
+        /* Tags List (Skills & Subjects) */
+        .tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-chip {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+
+        .tag-chip:hover {
+            border-color: var(--primary);
+            background: var(--primary-glow);
+        }
+
+        /* Document WebP Gallery Grid */
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .doc-card {
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .doc-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .doc-img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+            background: rgba(0,0,0,0.2);
+        }
+
+        .doc-caption {
+            padding: 10px;
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Dual Language Visibility Switch */
+        [data-en] { display: none !important; }
+        body.lang-en [data-fa] { display: none !important; }
+        body.lang-en [data-en] { display: inline-block !important; }
+        
+        div[data-en], p[data-en], section[data-en], ul[data-en], li[data-en] { 
+            display: none !important; 
+        }
+        body.lang-en div[data-en], 
+        body.lang-en p[data-en], 
+        body.lang-en section[data-en],
+        body.lang-en ul[data-en],
+        body.lang-en li[data-en] { 
+            display: block !important; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Floating Controls Bar -->
+    <div class="controls-bar">
+        <button class="btn-ctrl" onclick="toggleTheme()" id="themeBtn">🌓 <span data-fa>تم کاربر</span><span data-en>Theme</span></button>
+        <button class="btn-ctrl" onclick="toggleLanguage()" id="langBtn">🌐 English</button>
+    </div>
+
+    <div class="container">
+
+        <!-- Header / Profile Section -->
+        <header class="profile-card">
+            <div class="profile-img-wrapper">
+                <!-- تصویر اصلی رزومه به فرمت webp -->
+                <img src="profile.webp" alt="Mohammad Ghadimi" class="profile-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%231e293b\'/><text x=\'50%\' y=\'50%\' fill=\'%2338bdf8\' font-size=\'30\' text-anchor=\'middle\' dy=\'.3em\'>MG</text></svg>'">
+            </div>
+
+            <h1 class="name">
+                <span data-fa>محمد قدیمی نیلق</span>
+                <span data-en>Mohammad Ghadimi Neilagh</span>
+            </h1>
+
+            <div class="subtitle">
+                <span data-fa>مدیریت بازرگانی | مهندسی نرم‌افزار | هوش مصنوعی & تولید خلاق</span>
+                <span data-en>Management | Software Engineering | AI | Creative Production</span>
+            </div>
+
+            <!-- اطلاعات شناسنامه‌ای و تماس جهت مرور سریع کارفرما -->
+            <div class="contact-info-grid">
+                <div class="info-tag">📍 <span data-fa>ایران، رشت</span><span data-en>Iran, Rasht</span></div>
+                <div class="info-tag">🪪 <span data-fa>کد ملی: ۰۰۸۱۵۷۰۲۰۱</span><span data-en>National ID: 0081570201</span></div>
+                <div class="info-tag">📱 +989113506182 / +989116301467</div>
+                <div class="info-tag">✉️ mohammadghadimi88@gmail.com</div>
+            </div>
+
+            <p class="bio">
+                <span data-fa>پژوهشگر بین‌رشته‌ای با پس‌زمینه آکادمیک در مدیریت بازرگانی و مهندسی نرم‌افزار (ارشد با معدل ۱۸.۷۶ و نمره پایان‌نامه ۱۷.۲۵ در حوزه خلاصه‌سازی هوشمند صوتی با یادگیری عمیق). نویسنده ۵ جلد کتاب در حوزه‌های مدیریت، بازرگانی، سرمایه اجتماعی و دارای بیش از ۹ سال سابقه اجرایی، دانشگاهی، فیلم‌سازی و تولید محتوای دیجیتال.</span>
+                <span data-en>Interdisciplinary professional combining Business Management & Software Engineering (M.Sc. GPA: 18.76/20, Thesis: 17.25/20 in Audio Summarization via Deep Learning). Author of 5 published books across Management, Social Capital, and Project Management, with 9+ years of academic administration and creative production experience.</span>
+            </p>
+
+            <!-- Social Links -->
+            <div class="social-buttons">
+                <a href="https://www.linkedin.com/in/mohammad-ghadimi-7988a7aa/" target="_blank" class="social-btn">LinkedIn</a>
+                <a href="https://t.me/username" target="_blank" class="social-btn">Telegram</a>
+                <a href="https://instagram.com/username" target="_blank" class="social-btn">Instagram</a>
+                <a href="https://github.com/username" target="_blank" class="social-btn">GitHub</a>
+            </div>
+
+            <!-- Direct Contact CTAs -->
+            <div class="action-btns">
+                <a href="mailto:mohammadghadimi88@gmail.com" class="btn-action">
+                    <span data-fa>ارسال ایمیل</span>
+                    <span data-en>Send Email</span>
+                </a>
+                <a href="tel:+989113506182" class="btn-action outline">
+                    <span data-fa>تماس مستقیم</span>
+                    <span data-en>Direct Call</span>
+                </a>
+            </div>
+        </header>
+
+        <!-- Academic & Research -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span data-fa>🎓 سوابق تحصیلی و پژوهشی</span>
+                    <span data-en>🎓 Education & Academic Research</span>
+                </h2>
+            </div>
+
+            <!-- Master Degree -->
+            <div class="timeline-item">
+                <div class="item-head">
+                    <span class="item-title">
+                        <span data-fa>کارشناسی ارشد مهندسی کامپیوتر - نرم‌افزار</span>
+                        <span data-en>M.Sc. in Computer Engineering – Software</span>
+                    </span>
+                    <span class="item-date">۱۳۹۶ - ۱۳۹۹</span>
+                </div>
+                <div class="item-subtitle">
+                    <span data-fa>موسسه آموزش عالی دیلمان لاهیجان | معدل: ۱۸.۷۶ از ۲۰</span>
+                    <span data-en>Deylaman Institute of Higher Education | GPA: 18.76 / 20</span>
+                </div>
+                <div class="item-desc">
+                    <strong style="color: var(--text-main);">
+                        <span data-fa>عنوان پایان‌نامه (نمره: ۱۷.۲۵):</span>
+                        <span data-en>Master's Thesis (Grade: 17.25 / 20):</span>
+                    </strong>
+                    <p><span data-fa>توسعه سیستم / مدل هوشمند خلاصه‌سازی متنی فایل‌های صوتی با استفاده از تکنیک‌های یادگیری عمیق (Deep Learning).</span><span data-en>Development of an Intelligent System/Model for Text Summarization of Audio Files Using Deep Learning Techniques.</span></p>
+                </div>
+            </div>
+
+            <!-- Bachelor Degree -->
+            <div class="timeline-item">
+                <div class="item-head">
+                    <span class="item-title">
+                        <span data-fa>کارشناسی مدیریت بازرگانی</span>
+                        <span data-en>B.Sc. in Business Management</span>
+                    </span>
+                    <span class="item-date">۱۳۸۹ - ۱۳۹۱</span>
+                </div>
+                <div class="item-subtitle">
+                    <span data-fa>موسسه آموزش عالی دیلمان لاهیجان</span>
+                    <span data-en>Deylaman Institute of Higher Education, Lahijan</span>
+                </div>
+            </div>
+
+            <!-- Associate Degree -->
+            <div class="timeline-item">
+                <div class="item-head">
+                    <span class="item-title">
+                        <span data-fa>کاردانی خدمات مسافرتی و جهانگردی</span>
+                        <span data-en>Associate Degree in Tourism & Travel Services</span>
+                    </span>
+                    <span class="item-date">۱۳۸۶ - ۱۳۸۹</span>
+                </div>
+                <div class="item-subtitle">
+                    <span data-fa>موسسه رودکی تنکابن</span>
+                    <span data-en>Roudaki Institute of Higher Education, Tonekabon</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Books & Publications -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span data-fa>📚 تألیفات و کتاب‌ها (۵ عنوان)</span>
+                    <span data-en>📚 Published Books (5 Titles)</span>
+                </h2>
+            </div>
+
+            <div class="timeline-item">
+                <div class="item-desc">
+                    <ul data-fa>
+                        <li><strong>انسان علیه‌السلام</strong> - کتاب ادبی / داستانی</li>
+                        <li><strong>زن بودن جرم نیست، هنر است</strong> - مجموعه داستان کوتاه (سال ۱۳۹۶)</li>
+                        <li><strong>تبلیغات اثربخش</strong> - کتاب تخصصی بازاریابی و کسب‌وکار (سال ۱۳۹۷)</li>
+                        <li><strong>سرمایه اجتماعی و مدیریت دانش</strong> - کتاب پژوهشی و مدیریتی (سال ۱۳۹۸)</li>
+                        <li><strong>مدیریت پروژه در مدیریت بازرگانی</strong> - کتاب تخصصی کاربرد مدیریت پروژه</li>
+                    </ul>
+                    <ul data-en>
+                        <li><strong>Ensan Aleyhes Salam</strong> - Literary / Creative Writing</li>
+                        <li><strong>Being a Woman is Not a Crime, It is an Art</strong> - Short Story Collection (2017)</li>
+                        <li><strong>Effective Advertising</strong> - Marketing & Business Book (2018)</li>
+                        <li><strong>Social Capital and Knowledge Management</strong> - Management Research (2019)</li>
+                        <li><strong>Project Management in Business Management</strong> - Academic & Practical Guide</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Professional Experience -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span data-fa>💼 سوابق شغلی و اجرایی</span>
+                    <span data-en>💼 Professional Work Experience</span>
+                </h2>
+            </div>
+
+            <!-- Job 1 -->
+            <div class="timeline-item">
+                <div class="item-head">
+                    <span class="item-title">
+                        <span data-fa>کارشناس آموزشی، پژوهشی و امور دانشجویی</span>
+                        <span data-en>Academic, Educational & Cultural Officer</span>
+                    </span>
+                    <span class="item-date">شهریور ۱۳۹۴ - تاکنون</span>
+                </div>
+                <div class="item-subtitle">
+                    <span data-fa>دانشگاه دیلمان لاهیجان (۹+ سال سابقه)</span>
+                    <span data-en>Deylaman Institute of Higher Education (9+ Years)</span>
+                </div>
+                <div class="item-desc">
+                    <span data-fa>مدیریت فرآیندهای آموزشی و پژوهشی دانشگاه، هماهنگی امور دانشجویی و فرهنگی، ارتباط مستقیم با استادان و دانشجویان و ساماندهی ساختارهای اداری.</span>
+                    <span data-en>Managing university educational and research processes, student and cultural affairs coordination, and handling academic administrative systems.</span>
+                </div>
+            </div>
+
+            <!-- Job 2 -->
+            <div class="timeline-item">
+                <div class="item-head">
+                    <span class="item-title">
+                        <span data-fa>فیلمبردار و تدوین‌گر</span>
+                        <span data-en>Cinematographer & Video Editor</span>
+                    </span>
+                    <span class="item-date">آبان ۱۳۸۹ - خرداد ۱۳۹۲</span>
+                </div>
+                <div class="item-subtitle">
+                    <span data-fa>استودیو عکس و فیلم جوانه (رشت)</span>
+                    <span data-en>Javaneh Photo & Film Studio (Rasht)</span>
+                </div>
+                <div class="item-desc">
+                    <span data-fa>تولید ویدئو، تصویربرداری حرفه‌ای، تدوین فیلم با Edius و طراحی گرافیک.</span>
+                    <span data-en>Video production, professional camera operation, film editing with Edius, and graphic design.</span>
+                </div>
+            </div>
+
+            <!-- Job 3 -->
+            <div class="timeline-item">
+                <div class="item-head">
+                    <span class="item-title">
+                        <span data-fa>استادکار و متخصص تولید و نصب درب و پنجره UPVC</span>
+                        <span data-en>UPVC Master Technician & Business Operator</span>
+                    </span>
+                    <span class="item-date"><span data-fa>سابقه عملی</span><span data-en>Practical Experience</span></span>
+                </div>
+                <div class="item-desc">
+                    <span data-fa>تسلط کامل بر اندازه‌گیری، ساخت، یراق‌آلات، مونتاژ، مدیریت پروژه‌های مشتریان و عملیات یک کسب‌وکار تولیدی و خدماتی کوچک.</span>
+                    <span data-en>Hands-on expertise in production, measurements, fitting, installation, and management of manufacturing operations for UPVC doors & windows.</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificates & Honors -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span data-fa>🏆 افتخارات، دوره‌ها و گواهینامه‌ها</span>
+                    <span data-en>🏆 Awards, Honors & Certifications</span>
+                </h2>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="item-desc">
+                    <ul data-fa>
+                        <li><strong>مقام اول بخش نویسندگی:</strong> جشنواره جوان خلاق لاهیج (۱۳۹۵)</li>
+                        <li><strong>دوره تربیت مربی خلاقیت و نوآوری:</strong> بنیاد نخبگان و دانشگاه فنی و حرفه‌ای گیلان (۴۰ ساعت - ۱۴۰۰)</li>
+                        <li><strong>دوره نوآوری نظام‌یافته TRIZ:</strong> دانشگاه دیلمان (۱۳۹۵)</li>
+                        <li><strong>دوره نگارش، تولید و چاپ مقاله ISI:</strong> دانشگاه دیلمان (۱۳۹۴)</li>
+                        <li><strong>دوره آشنایی با سامانه آموزش عالی:</strong> دانشگاه گیلان (۱۳۹۶)</li>
+                        <li><strong>تقدیر در امر کارگردانی و نمایشنامه‌نویسی:</strong> دانشگاه پیام نور آستانه اشرفیه (۱۳۹۴)</li>
+                        <li><strong>تقدیر در هفته کتاب و کتاب‌خوانی:</strong> شهرستان لاهیجان (۱۳۹۶)</li>
+                        <li><strong>عضویت‌ها:</strong> عضو سراسر اهل قلم ایران (با ۴ عنوان کتاب)، عضو خانه کارگر، عضو صندوق اعتباری هنر.</li>
+                        <li><strong>گواهینامه‌های فنی:</strong> نصب و تعمیر پکیج دیواری گازی، تعمیر لوازم خانگی گازسوز.</li>
+                    </ul>
+                    <ul data-en>
+                        <li><strong>First Place in Writing:</strong> Young Creative Festival (2016)</li>
+                        <li><strong>Creativity & Innovation Trainer Course:</strong> National Elites Foundation & TVU (40 Hours - 2021)</li>
+                        <li><strong>Systematic Innovation (TRIZ) Course:</strong> Deylaman Institute (2016)</li>
+                        <li><strong>ISI Paper Writing & Publishing Course:</strong> Deylaman Institute (2015)</li>
+                        <li><strong>Directing & Playwriting Appreciation Award:</strong> Payame Noor University (2015)</li>
+                        <li><strong>Memberships:</strong> Ahle Qalam Writers Association, House of Worker, Arts Credit Fund.</li>
+                        <li><strong>Technical Certifications:</strong> Gas Package Heating Repair, Domestic Gas Appliance Repair.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical & Soft Skills -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span data-fa>🛠️ مهارت‌ها و ابزارها</span>
+                    <span data-en>🛠️ Skills & Technologies</span>
+                </h2>
+            </div>
+
+            <div style="margin-bottom: 16px;">
+                <strong style="display:block; margin-bottom: 8px; font-size: 0.95rem;">
+                    <span data-fa>نرم‌افزارها و طراحی گرافیک:</span>
+                    <span data-en>Software & Design Tools:</span>
+                </strong>
+                <div class="tags-list">
+                    <span class="tag-chip">Adobe Photoshop (Advanced)</span>
+                    <span class="tag-chip">Adobe InDesign (Advanced)</span>
+                    <span class="tag-chip">Adobe Illustrator (Intermediate)</span>
+                    <span class="tag-chip">EDIUS (Advanced Video Editing)</span>
+                    <span class="tag-chip">Microsoft Word / Excel / PowerPoint / Outlook</span>
+                </div>
+            </div>
+
+            <div>
+                <strong style="display:block; margin-bottom: 8px; font-size: 0.95rem;">
+                    <span data-fa>حوزه‌های آکادمیک و بین‌رشته‌ای:</span>
+                    <span data-en>Interdisciplinary & Academic Focus:</span>
+                </strong>
+                <div class="tags-list">
+                    <span class="tag-chip">Business Management</span>
+                    <span class="tag-chip">Artificial Intelligence & Deep Learning</span>
+                    <span class="tag-chip">Text Summarization / Natural Language Processing</span>
+                    <span class="tag-chip">Knowledge Management & Social Capital</span>
+                    <span class="tag-chip">Project Management</span>
+                    <span class="tag-chip">Creative Production & Publishing</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Documents & WebP Image Gallery -->
+        <section>
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span data-fa>🖼️ گالری مدارک تحصیلی و هویتی (فرمت WebP)</span>
+                    <span data-en>🖼️ Documents & Certificates (WebP Gallery)</span>
+                </h2>
+            </div>
+            
+            <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 16px;">
+                <span data-fa>جهت بارگذاری سریع و بهینه، کلیه مدارک با فرمت webp ذخیره شده‌اند. با کلیک روی هر عکس می‌توانید نسخه باکیفیت را مشاهده کنید:</span>
+                <span data-en>For ultra-fast loading, all documents are served in webp format. Click to view high-resolution files:</span>
+            </p>
+
+            <div class="docs-grid">
+                <!-- مدرک ۱ -->
+                <a href="msc-degree.webp" target="_blank" class="doc-card">
+                    <img src="msc-degree.webp" alt="M.Sc Degree" class="doc-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111827\'/><text x=\'50%\' y=\'50%\' fill=\'%2338bdf8\' font-size=\'12\' text-anchor=\'middle\' dy=\'.3em\'>M.Sc Degree</text></svg>'">
+                    <div class="doc-caption">
+                        <span data-fa>مدرک ارشد مهندسی کامپیوتر</span>
+                        <span data-en>M.Sc. Software Degree</span>
+                    </div>
+                </a>
+
+                <!-- مدرک ۲ -->
+                <a href="bsc-degree.webp" target="_blank" class="doc-card">
+                    <img src="bsc-degree.webp" alt="B.Sc Degree" class="doc-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111827\'/><text x=\'50%\' y=\'50%\' fill=\'%2338bdf8\' font-size=\'12\' text-anchor=\'middle\' dy=\'.3em\'>B.Sc Degree</text></svg>'">
+                    <div class="doc-caption">
+                        <span data-fa>مدرک کارشناسی مدیریت</span>
+                        <span data-en>B.Sc. Management Degree</span>
+                    </div>
+                </a>
+
+                <!-- مدرک ۳ -->
+                <a href="national-card.webp" target="_blank" class="doc-card">
+                    <img src="national-card.webp" alt="National ID" class="doc-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111827\'/><text x=\'50%\' y=\'50%\' fill=\'%2338bdf8\' font-size=\'12\' text-anchor=\'middle\' dy=\'.3em\'>National ID</text></svg>'">
+                    <div class="doc-caption">
+                        <span data-fa>مدرک هویتی / کارت ملی</span>
+                        <span data-en>National Identity Card</span>
+                    </div>
+                </a>
+
+                <!-- مدرک ۴ -->
+                <a href="triz-certificate.webp" target="_blank" class="doc-card">
+                    <img src="triz-certificate.webp" alt="TRIZ Cert" class="doc-img" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100\' height=\'100\' viewBox=\'0 0 100 100\'><rect width=\'100%\' height=\'100%\' fill=\'%23111827\'/><text x=\'50%\' y=\'50%\' fill=\'%2338bdf8\' font-size=\'12\' text-anchor=\'middle\' dy=\'.3em\'>TRIZ Certificate</text></svg>'">
+                    <div class="doc-caption">
+                        <span data-fa>گواهی دوره TRIZ</span>
+                        <span data-en>TRIZ Innovation Cert</span>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Language Toggle Function
+        function toggleLanguage() {
+            const body = document.body;
+            const langBtn = document.getElementById('langBtn');
+            const isEn = body.classList.toggle('lang-en');
+            
+            body.setAttribute('dir', isEn ? 'ltr' : 'rtl');
+            body.setAttribute('lang', isEn ? 'en' : 'fa');
+            
+            langBtn.textContent = isEn ? '🌐 فارسی' : '🌐 English';
+            localStorage.setItem('pref-lang', isEn ? 'en' : 'fa');
+        }
+
+        // Theme Toggle Function
+        function toggleTheme() {
+            const html = document.documentElement;
+            const currentTheme = html.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            html.setAttribute('data-theme', newTheme);
+            localStorage.setItem('pref-theme', newTheme);
+        }
+
+        // Load Preferences on Start
+        (function init() {
+            const savedTheme = localStorage.getItem('pref-theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            const savedLang = localStorage.getItem('pref-lang');
+            if (savedLang === 'en') {
+                toggleLanguage();
+            }
+        })();
+    </script>
+</body>
+</html>
